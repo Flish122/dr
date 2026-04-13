@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днем Рождения, Папа!</title>
+    <style>
+        /* БАЗОВЫЕ НАСТРОЙКИ */
+        :root {
+            --primary: #FFD700; /* Золотой цвет */
+            --bg-dark: #0f172a;
+            --text-light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* ГЛАВНЫЙ ЭКРАН (HERO) */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: 10;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: #cbd5e1;
+            max-width: 600px;
+            z-index: 10;
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+        }
+
+        .btn-start {
+            margin-top: 40px;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--bg-dark);
+            background: var(--primary);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            animation: fadeIn 2s ease-out 1s both;
+        }
+
+        .btn-start:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+        }
+
+        /* СЕКЦИЯ КОНТЕНТА (ЭФФЕКТ СТЕКЛА) */
+        .content-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.4s ease, background 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-15px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .glass-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .glass-card p {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* АНИМАЦИИ */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* КОНФЕТТИ */
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background: #ffd700;
+            top: -20px;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(720deg); }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero" id="home">
+    <h1>С Днем Рождения, Папа!</h1>
+    <p>Спасибо тебе за всё.</p>
+    <button class="btn-start" onclick="startCelebration()">Нажми сюда!</button>
+</section>
+
+<section class="content-section" id="wishes">
+    <h2 class="section-title">Почему ты самый крутой:</h2>
+    <div class="cards-grid">
+        <div class="glass-card">
+            <h3>Мудрость</h3>
+            <p>Твои советы всегда помогают мне в трудную минуту. Спасибо за твое терпение и жизненный опыт.</p>
+        </div>
+        <div class="glass-card">
+            <h3>Поддержка</h3>
+            <p>Ты всегда веришь в меня, даже когда я сам в себе сомневаюсь. Это бесценно.</p>
+        </div>
+        <div class="glass-card">
+            <h3>Юмор</h3>
+            <p>Твои шутки делают любой день ярче. Оставайся всегда таким же позитивным и энергичным!</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Функция запуска праздника (скролл + конфетти)
+    function startCelebration() {
+        // Плавный скролл к пожеланиям
+        document.getElementById('wishes').scrollIntoView({ behavior: 'smooth' });
+
+        // Запуск генератора конфетти
+        createConfetti();
+    }
+
+    // Генератор конфетти на чистом JS
+    function createConfetti() {
+        const colors = ['#FFD700', '#FFA500', '#FF6347', '#00BFFF', '#32CD32'];
+        const heroSection = document.querySelector('.hero');
+
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti-piece');
+
+            // Рандомные стили для каждой частицы
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+
+            heroSection.appendChild(confetti);
+
+            // Удаляем элементы после анимации, чтобы не засорять память
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+    }
+
+    // Автоматически запускаем немного конфетти при загрузке
+    window.onload = () => {
+        setTimeout(createConfetti, 1000);
+    };
+</script>
+</body>
+</html>
